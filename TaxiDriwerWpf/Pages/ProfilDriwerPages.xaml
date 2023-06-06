@@ -10,7 +10,14 @@
 
     <Grid>
         <Image Source="/Resource/Computer.png" HorizontalAlignment="Left"  />
-
+        <Border HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="2" CornerRadius="15" Width="250" Height="150" VerticalAlignment="Top" Background="White">
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center" FontSize="25" Margin="0 20 0 0">Запаботанно</TextBlock>
+                <TextBlock HorizontalAlignment="Center" x:Name="Money" FontSize="25" Margin=" 0 20 0 0" ></TextBlock>
+            </StackPanel>
+           
+        </Border>
+     
         <Border  CornerRadius="20" BorderThickness="2" Background="White" Height="520" Width="310" HorizontalAlignment="Right"  BorderBrush="Black">
 
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище TaxiDB2Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище TaxiDB2Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Emplooy">
           <Key>
             <PropertyRef Name="Id" />
@@ -70,16 +70,6 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Type">
           <Key>
             <PropertyRef Name="Id" />
@@ -119,11 +109,11 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Order">
-              <PropertyRef Name="TaxistId" />
+              <PropertyRef Name="ClientId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Emplooy1">
+        <Association Name="FK_Order_Emplooy2">
           <End Role="Emplooy" Type="Self.Emplooy" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -131,7 +121,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Order">
-              <PropertyRef Name="ClientId" />
+              <PropertyRef Name="TaxistId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -178,7 +168,6 @@
           <EntitySet Name="OrderForDriver" EntityType="Self.OrderForDriver" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Emplooy_Role" Association="Self.FK_Emplooy_Role">
             <End Role="Role" EntitySet="Role" />
@@ -192,7 +181,7 @@
             <End Role="Emplooy" EntitySet="Emplooy" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Emplooy1" Association="Self.FK_Order_Emplooy1">
+          <AssociationSet Name="FK_Order_Emplooy2" Association="Self.FK_Order_Emplooy2">
             <End Role="Emplooy" EntitySet="Emplooy" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
@@ -209,11 +198,47 @@
             <End Role="OrderForDriver" EntitySet="OrderForDriver" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TaxiDB2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TaxiDB2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Emplooy" EntityType="TaxiDB2Model.Emplooy" />
+          <EntitySet Name="OchenkaZaOrder" EntityType="TaxiDB2Model.OchenkaZaOrder" />
+          <EntitySet Name="Order" EntityType="TaxiDB2Model.Order" />
+          <EntitySet Name="OrderForDriver" EntityType="TaxiDB2Model.OrderForDriver" />
+          <EntitySet Name="Payment" EntityType="TaxiDB2Model.Payment" />
+          <EntitySet Name="Role" EntityType="TaxiDB2Model.Role" />
+          <EntitySet Name="Type" EntityType="TaxiDB2Model.Type" />
+          <AssociationSet Name="FK_Emplooy_Role" Association="TaxiDB2Model.FK_Emplooy_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Emplooy" EntitySet="Emplooy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Emplooy" Association="TaxiDB2Model.FK_Order_Emplooy">
+            <End Role="Emplooy" EntitySet="Emplooy" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Emplooy2" Association="TaxiDB2Model.FK_Order_Emplooy2">
+            <End Role="Emplooy" EntitySet="Emplooy" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderForDriver_Emplooy" Association="TaxiDB2Model.FK_OrderForDriver_Emplooy">
+            <End Role="Emplooy" EntitySet="Emplooy" />
+            <End Role="OrderForDriver" EntitySet="OrderForDriver" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OchenkaZaOrder_Order" Association="TaxiDB2Model.FK_OchenkaZaOrder_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OchenkaZaOrder" EntitySet="OchenkaZaOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Payment" Association="TaxiDB2Model.FK_Order_Payment">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Type" Association="TaxiDB2Model.FK_Order_Type">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Emplooy">
           <Key>
             <PropertyRef Name="Id" />
@@ -230,10 +255,10 @@
           <Property Name="OrdersCompl" Type="Int32" />
           <Property Name="OchenkaObhay" Type="Int32" />
           <Property Name="IsBan" Type="Int32" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_Emplooy_Role" FromRole="Emplooy" ToRole="Role" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Emplooy" FromRole="Emplooy" ToRole="Order" />
-          <NavigationProperty Name="Order1" Relationship="Self.FK_Order_Emplooy1" FromRole="Emplooy" ToRole="Order" />
-          <NavigationProperty Name="OrderForDriver" Relationship="Self.FK_OrderForDriver_Emplooy" FromRole="Emplooy" ToRole="OrderForDriver" />
+          <NavigationProperty Name="Role" Relationship="TaxiDB2Model.FK_Emplooy_Role" FromRole="Emplooy" ToRole="Role" />
+          <NavigationProperty Name="Order" Relationship="TaxiDB2Model.FK_Order_Emplooy" FromRole="Emplooy" ToRole="Order" />
+          <NavigationProperty Name="Order1" Relationship="TaxiDB2Model.FK_Order_Emplooy2" FromRole="Emplooy" ToRole="Order" />
+          <NavigationProperty Name="OrderForDriver" Relationship="TaxiDB2Model.FK_OrderForDriver_Emplooy" FromRole="Emplooy" ToRole="OrderForDriver" />
         </EntityType>
         <EntityType Name="OchenkaZaOrder">
           <Key>
@@ -243,7 +268,7 @@
           <Property Name="Ochenka" Type="Int32" />
           <Property Name="IdOrder" Type="Int32" />
           <Property Name="MoneyTea" Type="Int32" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_OchenkaZaOrder_Order" FromRole="OchenkaZaOrder" ToRole="Order" />
+          <NavigationProperty Name="Order" Relationship="TaxiDB2Model.FK_OchenkaZaOrder_Order" FromRole="OchenkaZaOrder" ToRole="Order" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -259,11 +284,11 @@
           <Property Name="TypePaymentId" Type="Int32" />
           <Property Name="TypeId" Type="Int32" />
           <Property Name="IsAccept" Type="Int32" />
-          <NavigationProperty Name="Emplooy" Relationship="Self.FK_Order_Emplooy" FromRole="Order" ToRole="Emplooy" />
-          <NavigationProperty Name="Emplooy1" Relationship="Self.FK_Order_Emplooy1" FromRole="Order" ToRole="Emplooy" />
-          <NavigationProperty Name="OchenkaZaOrder" Relationship="Self.FK_OchenkaZaOrder_Order" FromRole="Order" ToRole="OchenkaZaOrder" />
-          <NavigationProperty Name="Payment" Relationship="Self.FK_Order_Payment" FromRole="Order" ToRole="Payment" />
-          <NavigationProperty Name="Type" Relationship="Self.FK_Order_Type" FromRole="Order" ToRole="Type" />
+          <NavigationProperty Name="Emplooy" Relationship="TaxiDB2Model.FK_Order_Emplooy" FromRole="Order" ToRole="Emplooy" />
+          <NavigationProperty Name="Emplooy1" Relationship="TaxiDB2Model.FK_Order_Emplooy2" FromRole="Order" ToRole="Emplooy" />
+          <NavigationProperty Name="OchenkaZaOrder" Relationship="TaxiDB2Model.FK_OchenkaZaOrder_Order" FromRole="Order" ToRole="OchenkaZaOrder" />
+          <NavigationProperty Name="Payment" Relationship="TaxiDB2Model.FK_Order_Payment" FromRole="Order" ToRole="Payment" />
+          <NavigationProperty Name="Type" Relationship="TaxiDB2Model.FK_Order_Type" FromRole="Order" ToRole="Type" />
         </EntityType>
         <EntityType Name="OrderForDriver">
           <Key>
@@ -274,7 +299,7 @@
           <Property Name="AgeDrivers" Type="Int32" />
           <Property Name="IdEmpooy" Type="Int32" />
           <Property Name="Status" Type="Int32" />
-          <NavigationProperty Name="Emplooy" Relationship="Self.FK_OrderForDriver_Emplooy" FromRole="OrderForDriver" ToRole="Emplooy" />
+          <NavigationProperty Name="Emplooy" Relationship="TaxiDB2Model.FK_OrderForDriver_Emplooy" FromRole="OrderForDriver" ToRole="Emplooy" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
@@ -282,7 +307,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Payment" FromRole="Payment" ToRole="Order" />
+          <NavigationProperty Name="Order" Relationship="TaxiDB2Model.FK_Order_Payment" FromRole="Payment" ToRole="Order" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -290,17 +315,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Emplooy" Relationship="Self.FK_Emplooy_Role" FromRole="Role" ToRole="Emplooy" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Emplooy" Relationship="TaxiDB2Model.FK_Emplooy_Role" FromRole="Role" ToRole="Emplooy" />
         </EntityType>
         <EntityType Name="Type">
           <Key>
@@ -308,11 +323,11 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Type" FromRole="Type" ToRole="Order" />
+          <NavigationProperty Name="Order" Relationship="TaxiDB2Model.FK_Order_Type" FromRole="Type" ToRole="Order" />
         </EntityType>
         <Association Name="FK_Emplooy_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
-          <End Role="Emplooy" Type="Self.Emplooy" Multiplicity="*" />
+          <End Type="TaxiDB2Model.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="TaxiDB2Model.Emplooy" Role="Emplooy" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
               <PropertyRef Name="Id" />
@@ -323,20 +338,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_Emplooy">
-          <End Role="Emplooy" Type="Self.Emplooy" Multiplicity="0..1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Emplooy">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="TaxistId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_Emplooy1">
-          <End Role="Emplooy" Type="Self.Emplooy" Multiplicity="0..1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <End Type="TaxiDB2Model.Emplooy" Role="Emplooy" Multiplicity="0..1" />
+          <End Type="TaxiDB2Model.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Emplooy">
               <PropertyRef Name="Id" />
@@ -346,9 +349,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Order_Emplooy2">
+          <End Type="TaxiDB2Model.Emplooy" Role="Emplooy" Multiplicity="0..1" />
+          <End Type="TaxiDB2Model.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Emplooy">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="TaxistId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_OrderForDriver_Emplooy">
-          <End Role="Emplooy" Type="Self.Emplooy" Multiplicity="0..1" />
-          <End Role="OrderForDriver" Type="Self.OrderForDriver" Multiplicity="*" />
+          <End Type="TaxiDB2Model.Emplooy" Role="Emplooy" Multiplicity="0..1" />
+          <End Type="TaxiDB2Model.OrderForDriver" Role="OrderForDriver" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Emplooy">
               <PropertyRef Name="Id" />
@@ -359,8 +374,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OchenkaZaOrder_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
-          <End Role="OchenkaZaOrder" Type="Self.OchenkaZaOrder" Multiplicity="*" />
+          <End Type="TaxiDB2Model.Order" Role="Order" Multiplicity="0..1" />
+          <End Type="TaxiDB2Model.OchenkaZaOrder" Role="OchenkaZaOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
               <PropertyRef Name="Id" />
@@ -371,8 +386,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_Payment">
-          <End Role="Payment" Type="Self.Payment" Multiplicity="0..1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <End Type="TaxiDB2Model.Payment" Role="Payment" Multiplicity="0..1" />
+          <End Type="TaxiDB2Model.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Payment">
               <PropertyRef Name="Id" />
@@ -383,8 +398,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_Type">
-          <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <End Type="TaxiDB2Model.Type" Role="Type" Multiplicity="0..1" />
+          <End Type="TaxiDB2Model.Order" Role="Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Type">
               <PropertyRef Name="Id" />
@@ -394,45 +409,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TaxiDB2Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Emplooy" EntityType="Self.Emplooy" />
-          <EntitySet Name="OchenkaZaOrder" EntityType="Self.OchenkaZaOrder" />
-          <EntitySet Name="Order" EntityType="Self.Order" />
-          <EntitySet Name="OrderForDriver" EntityType="Self.OrderForDriver" />
-          <EntitySet Name="Payment" EntityType="Self.Payment" />
-          <EntitySet Name="Role" EntityType="Self.Role" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="Type" EntityType="Self.Type" />
-          <AssociationSet Name="FK_Emplooy_Role" Association="Self.FK_Emplooy_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="Emplooy" EntitySet="Emplooy" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Emplooy" Association="Self.FK_Order_Emplooy">
-            <End Role="Emplooy" EntitySet="Emplooy" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Emplooy1" Association="Self.FK_Order_Emplooy1">
-            <End Role="Emplooy" EntitySet="Emplooy" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OrderForDriver_Emplooy" Association="Self.FK_OrderForDriver_Emplooy">
-            <End Role="Emplooy" EntitySet="Emplooy" />
-            <End Role="OrderForDriver" EntitySet="OrderForDriver" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OchenkaZaOrder_Order" Association="Self.FK_OchenkaZaOrder_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="OchenkaZaOrder" EntitySet="OchenkaZaOrder" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Payment" Association="Self.FK_Order_Payment">
-            <End Role="Payment" EntitySet="Payment" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Type" Association="Self.FK_Order_Type">
-            <End Role="Type" EntitySet="Type" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -441,90 +418,79 @@
           <EntitySetMapping Name="Emplooy">
             <EntityTypeMapping TypeName="TaxiDB2Model.Emplooy">
               <MappingFragment StoreEntitySet="Emplooy">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="EarningFromOrders" ColumnName="EarningFromOrders" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Card" ColumnName="Card" />
-                <ScalarProperty Name="OrdersCompl" ColumnName="OrdersCompl" />
-                <ScalarProperty Name="OchenkaObhay" ColumnName="OchenkaObhay" />
                 <ScalarProperty Name="IsBan" ColumnName="IsBan" />
+                <ScalarProperty Name="OchenkaObhay" ColumnName="OchenkaObhay" />
+                <ScalarProperty Name="OrdersCompl" ColumnName="OrdersCompl" />
+                <ScalarProperty Name="Card" ColumnName="Card" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="EarningFromOrders" ColumnName="EarningFromOrders" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OchenkaZaOrder">
             <EntityTypeMapping TypeName="TaxiDB2Model.OchenkaZaOrder">
               <MappingFragment StoreEntitySet="OchenkaZaOrder">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Ochenka" ColumnName="Ochenka" />
-                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
                 <ScalarProperty Name="MoneyTea" ColumnName="MoneyTea" />
+                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+                <ScalarProperty Name="Ochenka" ColumnName="Ochenka" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="TaxiDB2Model.Order">
               <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="TaxistId" ColumnName="TaxistId" />
-                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-                <ScalarProperty Name="AddressStart" ColumnName="AddressStart" />
-                <ScalarProperty Name="AddressEnd" ColumnName="AddressEnd" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="TypePaymentId" ColumnName="TypePaymentId" />
-                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
                 <ScalarProperty Name="IsAccept" ColumnName="IsAccept" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="TypePaymentId" ColumnName="TypePaymentId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="AddressEnd" ColumnName="AddressEnd" />
+                <ScalarProperty Name="AddressStart" ColumnName="AddressStart" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="TaxistId" ColumnName="TaxistId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderForDriver">
             <EntityTypeMapping TypeName="TaxiDB2Model.OrderForDriver">
               <MappingFragment StoreEntitySet="OrderForDriver">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="AgeDrivers" ColumnName="AgeDrivers" />
-                <ScalarProperty Name="IdEmpooy" ColumnName="IdEmpooy" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IdEmpooy" ColumnName="IdEmpooy" />
+                <ScalarProperty Name="AgeDrivers" ColumnName="AgeDrivers" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Payment">
             <EntityTypeMapping TypeName="TaxiDB2Model.Payment">
               <MappingFragment StoreEntitySet="Payment">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Role">
             <EntityTypeMapping TypeName="TaxiDB2Model.Role">
               <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="TaxiDB2Model.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Type">
             <EntityTypeMapping TypeName="TaxiDB2Model.Type">
               <MappingFragment StoreEntitySet="Type">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

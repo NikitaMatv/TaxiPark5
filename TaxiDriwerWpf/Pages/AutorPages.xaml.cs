@@ -43,7 +43,7 @@ namespace TaxiDriwerWpf.Pages
                 return;
             }
             App.LoggedEmployee = employee;
-
+            App.Id = employee.Id;
           
             if (employee.RoleId == 2)
             {
@@ -61,7 +61,7 @@ namespace TaxiDriwerWpf.Pages
             {
                 MessageBox.Show("У вас нет доступа к этому приложению");
             }
-
+       
         }
 
 

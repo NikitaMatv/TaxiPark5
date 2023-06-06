@@ -105,9 +105,6 @@
     <Compile Include="Components\Role.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Components\sysdiagrams.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Components\Type.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -120,6 +117,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\EditDriwerPages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\HistoriPages.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -142,6 +143,9 @@
     </Compile>
     <Compile Include="Pages\EditDriwerPages.xaml.cs">
       <DependentUpon>EditDriwerPages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\HistoriPages.xaml.cs">
+      <DependentUpon>HistoriPages.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MainOperatorPages.xaml.cs">
       <DependentUpon>MainOperatorPages.xaml</DependentUpon>

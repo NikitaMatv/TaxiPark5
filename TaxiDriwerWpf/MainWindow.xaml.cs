@@ -49,10 +49,18 @@ namespace TaxiDriwerWpf
             }
         }
 
-        //private void BtSender_MouseDown(object sender, MouseButtonEventArgs e)
-        //{
-        //    MainFrame.NavigationService.Navigate(new AutorPages());
-        //}
+        private void BtSender_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (App.LoggedEmployee != null)
+            {
+                App.LoggedEmployee = null;
+                MainFrame.NavigationService.Navigate(new HistoriPages());
+            }
+            else
+            {
+                MessageBox.Show("Нужно войти в аккаунт");
+            }
+        }
 
         private void BtOrder_MouseDown(object sender, MouseButtonEventArgs e)
         {

@@ -17,5 +17,6 @@ namespace TaxiDriwerWpf
         public static TaxiDB2Entities DB = new TaxiDB2Entities();
         public static Emplooy LoggedEmployee;
         public static bool IsAutorizate = false;
+        public static int Id;
     }
 }

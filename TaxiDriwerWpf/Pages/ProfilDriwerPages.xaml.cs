@@ -27,7 +27,8 @@ namespace TaxiDriwerWpf.Pages
             InitializeComponent();
             contextemploy = emplooy;
             DataContext = contextemploy;
-
+            var List = App.DB.Order.Where(x => x.TaxistId == App.Id).Where(x => x.IsAccept == 3) ;
+            Money.Text =$"{ List.Sum(x=>x.Price) } руб."; 
 
         }
 

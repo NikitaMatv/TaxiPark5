@@ -41,7 +41,7 @@
         <TextBlock x:Name="BtExit" Style="{StaticResource MeuSymbolBt}" Text="&#xf011;" MouseDown="BtExit_MouseDown"   HorizontalAlignment="Right" Margin="0 14 205 0"  FontSize="45"/>
         <TextBlock x:Name="BtMin" Style="{StaticResource MeuSymbolBt}" Text="&#xf068;" MouseDown="BtMin_MouseDown"  HorizontalAlignment="Right" Margin="0 14 275 0"  FontSize="45"/>
         <TextBlock x:Name="BtSinout" Style="{StaticResource MeuSymbolBt}" Text="&#xf08b;" MouseDown="BtSinout_MouseDown" HorizontalAlignment="Right" Margin="0 14 365 0"  FontSize="45"/>
-        <!--<TextBlock x:Name="BtSender" Style="{StaticResource MeuSymbolBt}" Text="&#xf003;" MouseDown="BtSender_MouseDown" HorizontalAlignment="Right" Margin="0 14 610 0"  FontSize="45"/>-->
+        <TextBlock x:Name="BtSender" Visibility="Visible" Style="{StaticResource MeuSymbolBt}" Text="&#xf003;" MouseDown="BtSender_MouseDown" HorizontalAlignment="Right" Margin="0 14 610 0"  FontSize="45"/>
         <TextBlock x:Name="BtOrder" Style="{StaticResource MeuSymbolBt}" Text="&#xf02d;" MouseDown="BtOrder_MouseDown" HorizontalAlignment="Right" Margin="0 14 710 0"  FontSize="45"/>
         <Frame Grid.Row="1" x:Name="MainFrame" Background="Transparent" Height="550" Width="900" NavigationUIVisibility="Hidden"></Frame>
     </Grid>

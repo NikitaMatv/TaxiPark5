@@ -20,6 +20,12 @@ namespace TaxiAdminWpf.Pages
     /// Логика взаимодействия для BanListPages.xaml
     /// </summary>
     public partial class BanListPages : Page
+
+
+
+
+
+
     {
         public BanListPages()
         {
@@ -143,7 +149,7 @@ namespace TaxiAdminWpf.Pages
                 }
                 selectedclient.IsBan = 0;
             }
-
+             
 
             App.DB.SaveChanges();
             NavigationService.Navigate(new BanListPages());
