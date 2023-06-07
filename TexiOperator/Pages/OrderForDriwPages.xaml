@@ -9,6 +9,12 @@
       Title="OrderForDriwPages">
 
     <Grid x:Name="grid" Background="Transparent">
+        <Border Background="White" BorderBrush="Black" CornerRadius="15" BorderThickness="2" x:Name="SpTaxi" Visibility="Collapsed">
+            <StackPanel VerticalAlignment="Center" >
+                <Image Source="/Resource/taxi_18540.png"  RenderOptions.BitmapScalingMode="HighQuality"  Width="300" Height="300"/>
+                <TextBlock FontSize="40" TextAlignment="Center">Список заказов пуст.</TextBlock>
+            </StackPanel>
+        </Border>
         <StackPanel  VerticalAlignment="Bottom" Background="Transparent">
             <ListView  Height="{Binding ActualHeight, ElementName=grid, Mode=OneWay}" Width="{Binding ActualWidth, ElementName=grid, Mode=OneWay}" Background="Transparent" BorderBrush="Transparent" Margin="0 0 0 0" x:Name="LvAccept" SelectionChanged="LvAccept_SelectionChanged">
                 <ListView.ItemTemplate>

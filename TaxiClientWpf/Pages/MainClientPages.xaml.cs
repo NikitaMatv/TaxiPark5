@@ -25,6 +25,10 @@ namespace TaxiClientWpf.Pages
         {
             InitializeComponent();
             LvAccept.ItemsSource = App.DB.Order.Where(x => x.ClientId == App.LoggedEmployee.Id  && x.IsAccept !=3).ToList();
+            if (LvAccept.Items.Count == 0)
+            {
+                SpTaxi.Visibility = Visibility.Visible;
+            }
         }
 
 

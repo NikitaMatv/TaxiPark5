@@ -24,8 +24,12 @@ namespace TaxiDriwerWpf.Pages
         public OrderDriwerPages()
         {
             InitializeComponent();
-
+          
             LvAccept.ItemsSource = App.DB.Order.Where(x => x.TaxistId == null).Where(x => x.IsAccept == 1).ToList();
+            if (LvAccept.Items.Count == 0)
+            {
+                SpTaxi.Visibility = Visibility.Visible;
+            }
         }
        
         private void BtAccept_MouseDown(object sender, MouseButtonEventArgs e)

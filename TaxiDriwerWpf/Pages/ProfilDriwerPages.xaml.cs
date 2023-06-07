@@ -25,9 +25,15 @@ namespace TaxiDriwerWpf.Pages
         public ProfilDriwerPages(Emplooy emplooy)
         {
             InitializeComponent();
+           
             contextemploy = emplooy;
             DataContext = contextemploy;
             var List = App.DB.Order.Where(x => x.TaxistId == App.Id).Where(x => x.IsAccept == 3) ;
+            if (List.Sum(x => x.Price) == null)
+            {
+                Money.Text = $"0 руб.";
+            }
+            else
             Money.Text =$"{ List.Sum(x=>x.Price) } руб."; 
 
         }

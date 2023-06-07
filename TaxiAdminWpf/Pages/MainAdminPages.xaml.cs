@@ -25,7 +25,10 @@ namespace TaxiAdminWpf.Pages
         {
             InitializeComponent();
             LvAccept.ItemsSource = App.DB.OrderForDriver.Where(x => x.Status == 1).ToList();
-
+            if (LvAccept.Items.Count == 0)
+            {
+                SpTaxi.Visibility = Visibility.Visible;
+            }
 
 
         }

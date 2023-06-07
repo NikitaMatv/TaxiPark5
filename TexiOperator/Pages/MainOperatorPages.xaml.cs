@@ -25,6 +25,10 @@ namespace TexiOperator.Pages
         {
             InitializeComponent();
             LvAccept.ItemsSource = App.DB.Order.Where(x => x.TaxistId == null).Where(x => x.IsAccept == null).ToList();
+            if (LvAccept.Items.Count == 0)
+            {
+                SpTaxi.Visibility = Visibility.Visible;
+            }
         }
 
 

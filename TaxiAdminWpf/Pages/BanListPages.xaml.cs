@@ -31,6 +31,10 @@ namespace TaxiAdminWpf.Pages
         {
             InitializeComponent();
             LvAccept.ItemsSource = App.DB.Emplooy.ToList();
+            if(LvAccept.Items.Count == 0)
+            {
+                SpTaxi.Visibility = Visibility.Visible;
+            }
         }
 
         private void ListEmlooyBt_Click(object sender, RoutedEventArgs e)

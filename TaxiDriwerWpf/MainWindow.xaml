@@ -18,7 +18,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Border CornerRadius="100" Background="White" BorderBrush="Black" MouseDown="Border_MouseDown" BorderThickness="2" HorizontalAlignment="Right" Margin="0 20 20 0 " Width="120" Height="120" Grid.RowSpan="2" VerticalAlignment="Top" Panel.ZIndex="2">
-            <TextBlock x:Name="BtSnout" Style="{StaticResource MeuSymbolBt}" Foreground="Black" Text="&#xf2c0;" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 0"  FontSize="90"/>
+            <TextBlock x:Name="BtSnout" Style="{StaticResource MeuSymbolBt}" ToolTip="Профиль" Foreground="Black" Text="&#xf2c0;" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 0"  FontSize="90"/>
         </Border>
         <TextBlock x:Name="BtInform" Style="{StaticResource MeuSymbolBt}"  Text="&#xf05a;"  HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Black" Panel.ZIndex="2"  Margin="5,5,0,0"  FontSize="80"   Grid.RowSpan="2">
             <TextBlock.ToolTip>
@@ -38,11 +38,11 @@
 
 
         <Polygon Margin="0 -2 0 0" Fill="Black" HorizontalAlignment="Center" VerticalAlignment="Top" MouseDown="Polygon_MouseDown" Points="652, 70, 722, 2, 2, 2, 72, 70"></Polygon>
-        <TextBlock x:Name="BtExit" Style="{StaticResource MeuSymbolBt}" Text="&#xf011;" MouseDown="BtExit_MouseDown"   HorizontalAlignment="Right" Margin="0 14 205 0"  FontSize="45"/>
-        <TextBlock x:Name="BtMin" Style="{StaticResource MeuSymbolBt}" Text="&#xf068;" MouseDown="BtMin_MouseDown"  HorizontalAlignment="Right" Margin="0 14 275 0"  FontSize="45"/>
-        <TextBlock x:Name="BtSinout" Style="{StaticResource MeuSymbolBt}" Text="&#xf08b;" MouseDown="BtSinout_MouseDown" HorizontalAlignment="Right" Margin="0 14 365 0"  FontSize="45"/>
-        <TextBlock x:Name="BtSender" Visibility="Visible" Style="{StaticResource MeuSymbolBt}" Text="&#xf003;" MouseDown="BtSender_MouseDown" HorizontalAlignment="Right" Margin="0 14 610 0"  FontSize="45"/>
-        <TextBlock x:Name="BtOrder" Style="{StaticResource MeuSymbolBt}" Text="&#xf02d;" MouseDown="BtOrder_MouseDown" HorizontalAlignment="Right" Margin="0 14 710 0"  FontSize="45"/>
+        <TextBlock x:Name="BtExit" Style="{StaticResource MeuSymbolBt}"  ToolTip="Закрыть" Text="&#xf011;" MouseDown="BtExit_MouseDown"   HorizontalAlignment="Right" Margin="0 14 205 0"  FontSize="45"/>
+        <TextBlock x:Name="BtMin" Style="{StaticResource MeuSymbolBt}" ToolTip="Свернуть" Text="&#xf068;" MouseDown="BtMin_MouseDown"  HorizontalAlignment="Right" Margin="0 14 275 0"  FontSize="45"/>
+        <TextBlock x:Name="BtSinout" Style="{StaticResource MeuSymbolBt}" ToolTip="Выход" Text="&#xf08b;" MouseDown="BtSinout_MouseDown" HorizontalAlignment="Right" Margin="0 14 365 0"  FontSize="45"/>
+        <TextBlock x:Name="BtSender" Visibility="Visible" Style="{StaticResource MeuSymbolBt}" ToolTip="История заказов" Text="&#xf003;" MouseDown="BtSender_MouseDown" HorizontalAlignment="Right" Margin="0 14 610 0"  FontSize="45"/>
+        <TextBlock x:Name="BtOrder" Style="{StaticResource MeuSymbolBt}" Text="&#xf02d;" ToolTip="Список заказов  " MouseDown="BtOrder_MouseDown" HorizontalAlignment="Right" Margin="0 14 710 0"  FontSize="45"/>
         <Frame Grid.Row="1" x:Name="MainFrame" Background="Transparent" Height="550" Width="900" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>

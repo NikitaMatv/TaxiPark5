@@ -13,10 +13,10 @@ namespace TaxiDriwerWpf.Components
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TaxiDB2Entities : DbContext
+    public partial class TaxiDB2Entities1 : DbContext
     {
-        public TaxiDB2Entities()
-            : base("name=TaxiDB2Entities")
+        public TaxiDB2Entities1()
+            : base("name=TaxiDB2Entities1")
         {
         }
     

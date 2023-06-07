@@ -24,21 +24,14 @@ namespace TaxiDriwerWpf.Pages
         public HistoriPages()
         {
             InitializeComponent();
-            LvAccept.ItemsSource = App.DB.Order.Where(x => x.TaxistId == App.Id).Where(x=> x.IsAccept == 3).ToList();
+            
+            LvAccept.ItemsSource = App.DB.Order.Where(x => x.TaxistId == App.LoggedEmployee.Id).Where(x => x.IsAccept == 3).ToList();
+            if(LvAccept.Items.Count == 0)
+            {
+                SpTaxi.Visibility = Visibility.Visible;
+            }
         }
 
-        private void BtAccept_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            var selectedclient = (sender as TextBlock).DataContext as Order;
-            if (selectedclient == null)
-            {
-                MessageBox.Show("Выберете закакз");
-                return;
-            }
-            selectedclient.IsAccept = 2;
-            selectedclient.TaxistId = App.LoggedEmployee.Id;
-            App.DB.SaveChanges();
-            NavigationService.Navigate(new MainOperatorPages());
-        }
+       
     }
 }

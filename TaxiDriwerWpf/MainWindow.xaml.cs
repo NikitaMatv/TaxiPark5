@@ -53,7 +53,7 @@ namespace TaxiDriwerWpf
         {
             if (App.LoggedEmployee != null)
             {
-                App.LoggedEmployee = null;
+              
                 MainFrame.NavigationService.Navigate(new HistoriPages());
             }
             else
