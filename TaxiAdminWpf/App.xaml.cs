@@ -14,7 +14,7 @@ namespace TaxiAdminWpf
     /// </summary>
     public partial class App : Application
     {
-        public static TaxiDB2Entities DB = new TaxiDB2Entities();
+        public static TaxiDBEntities1 DB = new TaxiDBEntities1();
         public static Emplooy LoggedEmployee;
         public static bool IsAutorizate = false;
     }

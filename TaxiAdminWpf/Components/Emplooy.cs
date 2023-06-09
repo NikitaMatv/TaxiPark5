@@ -29,8 +29,8 @@ namespace TaxiAdminWpf.Components
         public string Login { get; set; }
         public string Password { get; set; }
         public Nullable<int> EarningFromOrders { get; set; }
-        public string Phone { get; set; }
-        public string Card { get; set; }
+        public Nullable<decimal> Phone { get; set; }
+        public Nullable<decimal> Card { get; set; }
         public Nullable<int> OrdersCompl { get; set; }
         public Nullable<int> OchenkaObhay { get; set; }
         public Nullable<int> IsBan { get; set; }

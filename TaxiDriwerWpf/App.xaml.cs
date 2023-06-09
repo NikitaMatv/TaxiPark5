@@ -14,7 +14,7 @@ namespace TaxiDriwerWpf
     /// </summary>
     public partial class App : Application
     {
-        public static TaxiDB2Entities1 DB = new TaxiDB2Entities1();
+        public static TaxiDBEntities DB = new TaxiDBEntities();
         public static Emplooy LoggedEmployee;
         public static bool IsAutorizate = false;
         public static int Id;

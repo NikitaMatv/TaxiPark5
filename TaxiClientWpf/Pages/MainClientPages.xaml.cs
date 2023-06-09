@@ -25,16 +25,12 @@ namespace TaxiClientWpf.Pages
         {
             InitializeComponent();
             LvAccept.ItemsSource = App.DB.Order.Where(x => x.ClientId == App.LoggedEmployee.Id  && x.IsAccept !=3).ToList();
-            if (LvAccept.Items.Count == 0)
+            if (App.DB.Order.FirstOrDefault(x => x.ClientId == App.LoggedEmployee.Id && x.IsAccept != 3) == null)
             {
                 SpTaxi.Visibility = Visibility.Visible;
+                LvAccept.Visibility = Visibility.Collapsed;
             }
         }
-
-
-
-
-
         private void ProfilBt_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ProfilClietnPages(App.LoggedEmployee));

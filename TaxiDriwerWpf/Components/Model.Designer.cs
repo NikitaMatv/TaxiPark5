@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Users\262038\Desktop\TaxiPark_4_WPF-master\TaxiDriwerWpf\Components\Model.edmx" включено. 
+﻿// Создание кода T4 для модели "C:\Users\Пользователь\Source\Repos\TaxiPark5\TaxiDriwerWpf\Components\Model.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.

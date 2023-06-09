@@ -13,10 +13,10 @@ namespace TaxiDriwerWpf.Components
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TaxiDB2Entities1 : DbContext
+    public partial class TaxiDBEntities : DbContext
     {
-        public TaxiDB2Entities1()
-            : base("name=TaxiDB2Entities1")
+        public TaxiDBEntities()
+            : base("name=TaxiDBEntities")
         {
         }
     
@@ -31,6 +31,7 @@ namespace TaxiDriwerWpf.Components
         public virtual DbSet<OrderForDriver> OrderForDriver { get; set; }
         public virtual DbSet<Payment> Payment { get; set; }
         public virtual DbSet<Role> Role { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Type> Type { get; set; }
     }
 }

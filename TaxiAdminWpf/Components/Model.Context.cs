@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TexiOperator.Components
+namespace TaxiAdminWpf.Components
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TaxiDB2Entities : DbContext
+    public partial class TaxiDBEntities1 : DbContext
     {
-        public TaxiDB2Entities()
-            : base("name=TaxiDB2Entities")
+        public TaxiDBEntities1()
+            : base("name=TaxiDBEntities1")
         {
         }
     

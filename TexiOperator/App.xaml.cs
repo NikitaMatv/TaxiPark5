@@ -13,7 +13,7 @@ namespace TexiOperator
     /// </summary>
     public partial class App : Application
     {
-        public static TaxiDB2Entities DB = new TaxiDB2Entities();
+        public static TaxiDBEntities2 DB = new TaxiDBEntities2();
         public static Emplooy LoggedEmployee;
         public static bool IsAutorizate = false;
 

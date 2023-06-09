@@ -9,8 +9,8 @@
       Title="MainClientPages">
 
     <Grid x:Name="grid" Background="Transparent">
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="Transparent" >
-            <Border Background="White" BorderBrush="Black" CornerRadius="15" BorderThickness="2" x:Name="SpTaxi" Visibility="Collapsed">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" >
+            <Border Background="White" BorderBrush="Black" Height="{Binding ActualHeight, ElementName=grid, Mode=OneWay}" Width="{Binding ActualWidth, ElementName=grid, Mode=OneWay}"  CornerRadius="15" BorderThickness="2" x:Name="SpTaxi" Visibility="Collapsed">
                 <StackPanel VerticalAlignment="Center" >
                     <Image Source="/Resource/taxi_18540.png"  RenderOptions.BitmapScalingMode="HighQuality"  Width="300" Height="300"/>
                     <TextBlock FontSize="40" TextAlignment="Center">Список пуст.</TextBlock>
